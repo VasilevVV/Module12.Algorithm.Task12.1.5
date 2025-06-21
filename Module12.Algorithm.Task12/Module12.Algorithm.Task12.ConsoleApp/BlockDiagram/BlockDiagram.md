@@ -18,9 +18,9 @@ flowchart TD
     Cycle1 --------> Cycle2
     subgraph "приветствие по имени"
         Cycle2{{"for i = 0; i < countUser; i++"}} -->
-        Task10{"if (arrayUsers[i].IsPremium == true)"} 
+        Task10{"if (arrayUsers[i].IsPremium == true);"} 
         Task10 ----->|да|Task11[/"вывести: Приветсвую arrayUsers[i].Name"/]
-        Task10 -->|нет|Task12[/"показать рекламу: ShowAds()"/]
+        Task10 -->|нет|Task12[/"показать рекламу: ShowAds();"/]
         Task12 ----> Task11 -------> |next i|Cycle2        
       end
     Cycle2 -------->
@@ -29,5 +29,4 @@ flowchart TD
 
 by https://mermaid.js.org
 and https://habr.com/ru/articles/652867/#flowchart
-
-https://app.diagrams.net/
+and https://app.diagrams.net/
