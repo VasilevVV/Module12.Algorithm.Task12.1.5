@@ -1,11 +1,11 @@
 ```mermaid
 flowchart TD
-    Begin(начало) -->
+    Begin(["начало"]) -->
     Task1[/"вывести: введите количество пользователей"/] -->
     Task2[/"считать countUser"/] -->
     Task3[/"создать список пользователей: arrayUsers = new User[countUser];"/]
     Task3 --> Cycle1
-    subgraph "÷икл1"
+    subgraph "ввод пользователей"
         Cycle1{{"for i = 0; i < countUser; i++"}} -->
         Task4[/"вывести: введите Login пользовател€ є{i}"/] -->
         Task5[/"считать arrayUsers[i].Login"/] -->
@@ -15,12 +15,19 @@ flowchart TD
         Task9[/"считать arrayUsers[i].IsPremium"/] -->
         |next i|Cycle1
       end
-    Task10[/"вывести: все записаны"/]
-    Cycle1 ---------> Task10
-    
-    
+    Cycle1 --------> Cycle2
+    subgraph "приветствие по имени"
+        Cycle2{{"for i = 0; i < countUser; i++"}} -->
+        Task10{"if (arrayUsers[i].IsPremium == true)"} 
+        Task10 ----->|да|Task11[/"вывести: ѕриветсвую arrayUsers[i].Name"/]
+        Task10 -->|нет|Task12[/"показать рекламу: ShowAds()"/]
+        Task12 ----> Task11 -------> |next i|Cycle2        
+      end
+    Cycle2 -------->
+    Task13(["конец"]) 
 ```
-
 
 by https://mermaid.js.org
 and https://habr.com/ru/articles/652867/#flowchart
+
+https://app.diagrams.net/
